@@ -49,8 +49,8 @@
 
     /* Left Sidebar */
     #sidebar {
-      width: 460px;
-      min-width: 460px;
+      width: 480px;
+      min-width: 480px;
       height: 100vh;
       background: var(--panel-bg);
       backdrop-filter: var(--glass-blur);
@@ -63,9 +63,16 @@
     }
 
     .header {
-      padding: 20px 20px 14px;
+      padding: 18px 20px 14px;
       border-bottom: 1px solid var(--border-color);
       background: linear-gradient(180deg, rgba(14, 165, 233, 0.15) 0%, transparent 100%);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
     }
 
     .brand-badge {
@@ -81,7 +88,6 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 8px;
     }
 
     .brand-badge .pulse-dot {
@@ -99,6 +105,25 @@
       100% { transform: scale(0.9); opacity: 0.7; }
     }
 
+    .btn-guide-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      background: rgba(0, 242, 254, 0.15);
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      color: #00f2fe;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-guide-pill:hover {
+      background: rgba(0, 242, 254, 0.25);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+    }
+
     h1 {
       font-size: 1.35rem;
       font-weight: 800;
@@ -114,8 +139,27 @@
       gap: 8px;
       font-size: 0.85rem;
       color: #38bdf8;
-      margin-top: 6px;
+      margin-top: 4px;
       font-weight: 500;
+    }
+
+    /* Amateur Explainer Banner */
+    .amateur-banner {
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(16, 185, 129, 0.08) 100%);
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-top: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    .amateur-banner:hover {
+      border-color: #00f2fe;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0, 242, 254, 0.2);
     }
 
     /* Filter Pills */
@@ -195,7 +239,7 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 8px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .club-name {
       font-size: 1.05rem;
@@ -215,6 +259,17 @@
     .region-frailes { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
     .region-perlas { background: rgba(6, 182, 212, 0.2); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.3); }
     .region-chiriqui { background: rgba(139, 92, 246, 0.2); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.3); }
+
+    .experience-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+    }
 
     .club-sub {
       font-size: 0.8rem;
@@ -383,26 +438,27 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(14px);
       z-index: 2000;
       display: none;
       align-items: center;
       justify-content: center;
+      padding: 20px;
     }
     .modal-overlay.open {
       display: flex;
     }
     .modal-card {
-      background: #0f1c34;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 16px;
-      width: 90%;
-      max-width: 600px;
-      max-height: 85vh;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(7, 13, 26, 0.99));
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 680px;
+      max-height: 88vh;
       overflow-y: auto;
-      padding: 24px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+      padding: 26px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 242, 254, 0.2);
     }
     .modal-header {
       display: flex;
@@ -411,42 +467,60 @@
       margin-bottom: 16px;
     }
     .modal-title {
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 800;
       color: #fff;
     }
     .close-btn {
-      background: none;
-      border: none;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: var(--text-muted);
-      font-size: 1.4rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
       cursor: pointer;
     }
-    .template-box {
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 14px;
-      font-size: 0.84rem;
-      line-height: 1.5;
-      color: #e2e8f0;
-      white-space: pre-wrap;
-      font-family: inherit;
+    .close-btn:hover {
+      background: rgba(239, 68, 68, 0.25);
+      color: #fff;
+    }
+
+    /* Glossary Tab Buttons */
+    .tab-bar {
+      display: flex;
+      gap: 6px;
       margin-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 8px;
+      overflow-x: auto;
     }
-    .modal-queue {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .queue-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.04);
-      padding: 8px 12px;
+    .tab-btn {
+      padding: 8px 14px;
       border-radius: 8px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+      color: #94a3b8;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active {
+      border-color: #00f2fe;
+      background: rgba(0, 242, 254, 0.18);
+      color: #00f2fe;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
     }
   </style>
 </head>
@@ -455,15 +529,52 @@
   <!-- Left Sidebar -->
   <aside id="sidebar">
     <div class="header">
-      <div class="brand-badge">
-        <span class="pulse-dot"></span>
-        Panama Diving Command
+      <div class="header-top">
+        <div class="brand-badge">
+          <span class="pulse-dot"></span>
+          Panama Diving Command
+        </div>
+        <button class="btn-guide-pill" onclick="openGlossaryModal()">
+          🤿 Amateurs Guide
+        </button>
       </div>
+
       <h1>Panama Dive Clubs & Expeditions</h1>
       <div class="base-info">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Departure Base: <strong>Playa Blanca (Río Hato, Coclé)</strong>
       </div>
+
+      <!-- Quick Beginner Explainer Banner -->
+      <div class="amateur-banner" onclick="openGlossaryModal()">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:1.25rem;">🤿</span>
+          <div>
+            <div style="font-size:0.82rem; font-weight:800; color:#f8fafc;">
+              What is a "Buzo" & Can Amateurs Dive?
+            </div>
+            <div style="font-size:0.72rem; color:#38bdf8;">
+              Learn operator terms, gear inclusions & beginner spots →
+            </div>
+          </div>
+        </div>
+        <span style="font-size:0.7rem; font-weight:800; background:rgba(0, 242, 254, 0.2); color:#00f2fe; padding:3px 8px; border-radius:6px; text-transform:uppercase;">
+          READ 101
+        </span>
+      </div>
+    </div>
+
+    <!-- Experience Filter Bar -->
+    <div style="padding: 10px 18px 0; display: flex; gap: 6px;">
+      <button class="filter-exp-btn active" data-exp="all" style="flex:1; padding:6px; border-radius:8px; font-size:0.72rem; font-weight:700; cursor:pointer; border:1px solid #00f2fe; background:rgba(0,242,254,0.2); color:#00f2fe; transition:all 0.15s ease;">
+        🌟 All Trips
+      </button>
+      <button class="filter-exp-btn" data-exp="beginner" style="flex:1.3; padding:6px; border-radius:8px; font-size:0.72rem; font-weight:700; cursor:pointer; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); color:#94a3b8; transition:all 0.15s ease;">
+        🟢 Beginners & Amateurs
+      </button>
+      <button class="filter-exp-btn" data-exp="advanced" style="flex:1.1; padding:6px; border-radius:8px; font-size:0.72rem; font-weight:700; cursor:pointer; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); color:#94a3b8; transition:all 0.15s ease;">
+        🔴 Advanced Only
+      </button>
     </div>
 
     <!-- Filters -->
@@ -491,6 +602,161 @@
   <!-- Interactive Map -->
   <main id="map"></main>
 
+  <!-- Beginners & Buzo Glossary Modal -->
+  <div class="modal-overlay" id="glossaryModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <div style="font-size:0.72rem; font-weight:800; color:#00f2fe; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:2px;">
+            Diving 101 & Panama Terminology Decoded
+          </div>
+          <h3 class="modal-title">Beginner & Amateur Scuba Guide</h3>
+        </div>
+        <button class="close-btn" onclick="closeGlossaryModal()">&times;</button>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" id="tab-buzo-btn" onclick="switchGlossaryTab('buzo')">What is a "Buzo"?</button>
+        <button class="tab-btn" id="tab-beginners-btn" onclick="switchGlossaryTab('beginners')">Can Amateurs Dive?</button>
+        <button class="tab-btn" id="tab-sites-btn" onclick="switchGlossaryTab('sites')">Best Sites for Beginners</button>
+        <button class="tab-btn" id="tab-pricing-btn" onclick="switchGlossaryTab('pricing')">Cost Breakdown</button>
+        <button class="tab-btn" id="tab-faq-btn" onclick="switchGlossaryTab('faq')">First-Timer FAQ</button>
+      </div>
+
+      <!-- Tab 1: Buzo -->
+      <div id="tab-buzo" class="tab-content">
+        <div style="background:linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(14, 165, 233, 0.05) 100%); border:1px solid rgba(0, 242, 254, 0.35); border-radius:14px; padding:16px; margin-bottom:14px;">
+          <div style="font-size:1.15rem; font-weight:800; color:#fff; margin-bottom:4px;">
+            🤿 "Buzo" = Certified Scuba Diver
+          </div>
+          <p style="font-size:0.83rem; color:#cbd5e1; line-height:1.5; margin:0;">
+            When an operator writes <strong>"$300 / buzo"</strong>, it means <strong>"$300 per certified diver"</strong>. They charge per person who breathes from scuba cylinders underwater. Non-diver companions who just want to sunbathe or snorkel usually pay much less ($50–$100).
+          </p>
+        </div>
+
+        <div class="info-card">
+          <strong style="color:#38bdf8;">Buceo vs Snorkel:</strong> <em>Buceo</em> is underwater scuba diving with compressed air tanks. <em>Snorkeling</em> is floating on the surface with a mask and breathing tube.
+        </div>
+        <div class="info-card">
+          <strong style="color:#10b981;">2 Inmersiones (2 Tanks):</strong> Standard day tour consists of 2 dives (~45 min each) separated by a 1-hour rest interval on the boat with fruits and refreshments.
+        </div>
+        <div class="info-card">
+          <strong style="color:#fbbf24;">Equipo Completo (Full Gear):</strong> Includes BCD buoyancy jacket, regulator, neoprene wetsuit, mask, and fins.
+        </div>
+      </div>
+
+      <!-- Tab 2: Beginners -->
+      <div id="tab-beginners" class="tab-content" style="display:none;">
+        <div style="background:rgba(16, 185, 129, 0.12); border:1px solid rgba(16, 185, 129, 0.35); border-radius:14px; padding:14px; margin-bottom:14px;">
+          <strong style="color:#34d399;">YES! Total beginners can dive in Panama.</strong> No prior license is required if you book a guided introductory program:
+        </div>
+        <div class="info-card">
+          <div style="font-size:0.95rem; font-weight:800; color:#fff; margin-bottom:2px;">1. Discover Scuba Diving (DSD / "Try Scuba")</div>
+          <p style="font-size:0.8rem; color:#94a3b8; margin:0; line-height:1.4;">
+            No certification required! You do a 20-minute briefing and dive hand-in-hand with an instructor down to 10–12 meters (35 feet).
+          </p>
+        </div>
+        <div class="info-card">
+          <div style="font-size:0.95rem; font-weight:800; color:#fff; margin-bottom:2px;">2. Open Water Diver (OWD License)</div>
+          <p style="font-size:0.8rem; color:#94a3b8; margin:0; line-height:1.4;">
+            The entry-level international scuba license (3-4 days). Qualifies you to dive to 18 meters (60 feet) worldwide with a buddy.
+          </p>
+        </div>
+        <div class="info-card">
+          <div style="font-size:0.95rem; font-weight:800; color:#fff; margin-bottom:2px;">3. Snorkel Companion Passenger</div>
+          <p style="font-size:0.8rem; color:#94a3b8; margin:0; line-height:1.4;">
+            Ride the dive boat, sunbathe on deck, and snorkel on shallow reefs while divers are below. Operators charge substantially less ($50–$100).
+          </p>
+        </div>
+      </div>
+
+      <!-- Tab 3: Sites -->
+      <div id="tab-sites" class="tab-content" style="display:none;">
+        <div class="info-card" style="border-color:rgba(16, 185, 129, 0.4); background:rgba(16, 185, 129, 0.08);">
+          <div style="color:#34d399; font-weight:800; font-size:0.95rem; margin-bottom:4px;">
+            ✓ #1 Best for Beginners: Portobelo (Caribbean)
+          </div>
+          <p style="font-size:0.8rem; color:#cbd5e1; line-height:1.4; margin:0;">
+            Protected bay with zero oceanic swell. Shallow coral gardens from 3m–15m, crystal Caribbean waters, and the intact Beechcraft twin-engine airplane wreck sits in calm sand at 21m. Flat rate: $155/day all-inclusive.
+          </p>
+        </div>
+        <div class="info-card" style="border-color:rgba(239, 68, 68, 0.4); background:rgba(239, 68, 68, 0.08);">
+          <div style="color:#f87171; font-weight:800; font-size:0.95rem; margin-bottom:4px;">
+            ⛔ Advanced Only: Coiba (Hannibal Bank) & Los Frailes
+          </div>
+          <p style="font-size:0.8rem; color:#cbd5e1; line-height:1.4; margin:0;">
+            Open-ocean seamounts with roaring currents, 50m drop-offs, and schooling hammerheads. Requires 30+ logged dives and good buoyancy control. Not suitable for beginners.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tab 4: Pricing -->
+      <div id="tab-pricing" class="tab-content" style="display:none;">
+        <div style="font-size:0.82rem; color:#94a3b8; margin-bottom:12px;">
+          What are you paying for in a $110–$160 dive tour?
+        </div>
+        <div class="info-card" style="display:flex; justify-content:space-between; align-items:center;">
+          <span>1. Twin-engine boat charter, fuel & captain</span>
+          <strong style="color:#38bdf8;">~$70 - $80</strong>
+        </div>
+        <div class="info-card" style="display:flex; justify-content:space-between; align-items:center;">
+          <span>2. Full equipment rental (BCD, Reg, Wetsuit, Fins)</span>
+          <strong style="color:#34d399;">$20 - $45</strong>
+        </div>
+        <div class="info-card" style="display:flex; justify-content:space-between; align-items:center;">
+          <span>3. 2 Pressurized air tanks + lead weight belts</span>
+          <strong style="color:#fbbf24;">Included</strong>
+        </div>
+        <div class="info-card" style="display:flex; justify-content:space-between; align-items:center;">
+          <span>4. Certified Divemaster guide in the water</span>
+          <strong style="color:#00f2fe;">Included</strong>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQ -->
+      <div id="tab-faq" class="tab-content" style="display:none;">
+        <div class="info-card">
+          <div style="color:#38bdf8; font-weight:800; font-size:0.9rem; margin-bottom:4px;">
+            ❓ Can I dive if I have never tried scuba before and have zero license?
+          </div>
+          <p style="font-size:0.8rem; color:#cbd5e1; line-height:1.4; margin:0;">
+            <strong>YES, 100%!</strong> Book <em>"Discover Scuba Diving" (DSD)</em>. No license or study needed. A certified instructor trains you in 20 minutes, equips you, and holds your hand underwater in calm shallow reefs (under 12m).
+          </p>
+        </div>
+        <div class="info-card">
+          <div style="color:#34d399; font-weight:800; font-size:0.9rem; margin-bottom:4px;">
+            ❓ What if I'm not a strong swimmer?
+          </div>
+          <p style="font-size:0.8rem; color:#cbd5e1; line-height:1.4; margin:0;">
+            You wear a BCD buoyancy jacket that inflates at the touch of a button to keep you floating effortlessly like a lifejacket at the surface. Gentle fin kicks move you underwater.
+          </p>
+        </div>
+        <div class="info-card">
+          <div style="color:#fbbf24; font-weight:800; font-size:0.9rem; margin-bottom:4px;">
+            ❓ How do I equalize ear pressure?
+          </div>
+          <p style="font-size:0.8rem; color:#cbd5e1; line-height:1.4; margin:0;">
+            Just pinch your nose and blow gently every 1 meter down, just like landing on an airplane. It pops your ears and eliminates all pressure.
+          </p>
+        </div>
+        <div class="info-card">
+          <div style="color:#c4b5fd; font-weight:800; font-size:0.9rem; margin-bottom:4px;">
+            ❓ Can non-divers come on the boat to snorkel?
+          </div>
+          <p style="font-size:0.8rem; color:#cbd5e1; line-height:1.4; margin:0;">
+            Yes! Dive operators offer a passenger/snorkel rate ($50-$100). They sunbathe on deck, eat fresh fruit, and snorkel on top of the reef while divers are underwater.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; text-align:right;">
+        <button onclick="closeGlossaryModal()" style="padding:10px 20px; border-radius:10px; background:rgba(255, 255, 255, 0.1); color:#fff; border:1px solid rgba(255, 255, 255, 0.2); font-weight:700; cursor:pointer;">
+          Close Guide
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Broadcast Modal -->
   <div class="modal-overlay" id="broadcastModal">
     <div class="modal-card">
@@ -501,10 +767,10 @@
       <p style="font-size: 0.83rem; color: var(--text-muted); margin-bottom: 12px;">
         Standardized inquiry for 2-3 tank dives, gear rental, park fees, and instructor expedition availability:
       </p>
-      <div class="template-box" id="templateText"></div>
+      <div style="background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:14px; font-size:0.84rem; line-height:1.5; color:#e2e8f0; white-space:pre-wrap; margin-bottom:18px;" id="templateText"></div>
       
       <h4 style="font-size: 0.95rem; margin-bottom: 10px; color: #fff;">Verified Operators (Direct 1-Click WhatsApp):</h4>
-      <div class="modal-queue" id="modalQueue"></div>
+      <div style="display:flex; flex-direction:column; gap:8px;" id="modalQueue"></div>
     </div>
   </div>
 
@@ -547,6 +813,8 @@ Thank you very much! Looking forward to your response.`;
         phoneDisplay: "+507 6904-4977",
         driveTime: "2.5 hrs (200 km)",
         estPrice: "$155 / day (All-Inclusive)",
+        experienceTag: "🟢 #1 Beginner & Amateur Friendly (Calm Caribbean Bay)",
+        experienceClass: "background:rgba(16,185,129,0.18); color:#34d399; border:1px solid rgba(16,185,129,0.4);",
         bragFactor: "<strong>Shipwrecks & Beechcraft HP-1477 Aircraft:</strong> Twin-engine aircraft intact at 21m (70ft) off Isla Buenaventura, colonial cannons, and calm Caribbean bay waters.",
         highlight: "OCTOBER 2026 WINNER: 100% Confirmed available for 3 certified divers ($155 all-inclusive)."
       },
@@ -564,6 +832,8 @@ Thank you very much! Looking forward to your response.`;
         phoneDisplay: "+507 6600-6191",
         driveTime: "4.5 hrs (370 km)",
         estPrice: "$300 / diver (Secas Islands)",
+        experienceTag: "🟡 Intermediate / Luxury Charter (Secas Islands)",
+        experienceClass: "background:rgba(139,92,246,0.18); color:#c4b5fd; border:1px solid rgba(139,92,246,0.4);",
         bragFactor: "<strong>Secas & Montuosa Islands:</strong> Oceanic volcanic pinnacles, giant manta rays, silky sharks, and zero tourist crowds.",
         highlight: "Luxury charter option with full equipment, fruits, and drinks included."
       },
@@ -581,6 +851,8 @@ Thank you very much! Looking forward to your response.`;
         phoneDisplay: "+507 6872-8097",
         driveTime: "4.0 hrs (260 km)",
         estPrice: "CLOSED IN OCTOBER",
+        experienceTag: "🔴 Advanced Pelagic (Open Ocean / Strong Swell)",
+        experienceClass: "background:rgba(239,68,68,0.18); color:#f87171; border:1px solid rgba(239,68,68,0.4);",
         bragFactor: "<strong>Galapagos Twin:</strong> Hannibal Bank & Damas Bay. 30+ hammerhead sharks, 5m pelagic mantas, and whale sharks.",
         highlight: "Closed Sep 25 - Nov 26, 2026 for annual staff vacation and rains."
       },
@@ -598,6 +870,8 @@ Thank you very much! Looking forward to your response.`;
         phoneDisplay: "+507 6774-0808",
         driveTime: "4.0 hrs (260 km)",
         estPrice: "CLOSED OCT 4-20",
+        experienceTag: "🔴 Advanced Pelagic (Open Pacific Drops)",
+        experienceClass: "background:rgba(239,68,68,0.18); color:#f87171; border:1px solid rgba(239,68,68,0.4);",
         bragFactor: "<strong>Pure Pelagics:</strong> High-speed twin launches for ocean crossing to Coiba in 70 min. Deep seamount drop-offs.",
         highlight: "Closed October 4 to 20, 2026. Julie referred to alternative shops."
       },
@@ -615,6 +889,8 @@ Thank you very much! Looking forward to your response.`;
         phoneDisplay: "+1 (623) 340-6112",
         driveTime: "4.0 hrs (260 km)",
         estPrice: "$145 - $180 / day",
+        experienceTag: "🟢 Beginner to Advanced (PADI Resort)",
+        experienceClass: "background:rgba(56,189,248,0.18); color:#38bdf8; border:1px solid rgba(56,189,248,0.4);",
         bragFactor: "<strong>Coiba National Park:</strong> Daily multi-tank expeditions and advanced PADI training.",
         highlight: "PADI 5-Star Dive Resort in Santa Catalina."
       },
@@ -632,6 +908,8 @@ Thank you very much! Looking forward to your response.`;
         phoneDisplay: "+507 6749-4308",
         driveTime: "3.0 hrs (190 km)",
         estPrice: "INACTIVE (NO SCUBA)",
+        experienceTag: "⚠️ Inactive / No Scuba Tours",
+        experienceClass: "background:rgba(100,116,139,0.18); color:#94a3b8; border:1px solid rgba(100,116,139,0.4);",
         bragFactor: "<strong>Pinnacles of Los Frailes:</strong> Oceanic rocks 12 nm offshore. Roaring currents, jacks, and migrating humpbacks.",
         highlight: "Confirmed inactive for scuba tours. No active diving operations."
       },
@@ -649,6 +927,8 @@ Thank you very much! Looking forward to your response.`;
         phoneDisplay: "+507 6709-5407",
         driveTime: "3.0 hrs (190 km)",
         estPrice: "SNORKEL ONLY / BRING OWN GEAR",
+        experienceTag: "🤿 Snorkel & Boat Transit Only",
+        experienceClass: "background:rgba(245,158,11,0.18); color:#fbbf24; border:1px solid rgba(245,158,11,0.4);",
         bragFactor: "<strong>Iguana Island Reef:</strong> Coastal boat transfers. Only provides boat transit if divers supply their own scuba tanks.",
         highlight: "Direct local boat operator at Playa El Arenal (no scuba gear or tanks)."
       },
@@ -666,6 +946,8 @@ Thank you very much! Looking forward to your response.`;
         phoneDisplay: "+507 6673-3681",
         driveTime: "2.5 hrs (200 km)",
         estPrice: "In coordination ($120-$140)",
+        experienceTag: "🟢 Beginner Friendly (Portobelo Sheltered Bay)",
+        experienceClass: "background:rgba(16,185,129,0.18); color:#34d399; border:1px solid rgba(16,185,129,0.4);",
         bragFactor: "<strong>Drake Island & Salmedina:</strong> Warm Caribbean waters over the historic underwater resting place of Sir Francis Drake.",
         highlight: "Panama's longest established dive shop. Coordination underway with Carlos."
       },
@@ -683,6 +965,8 @@ Thank you very much! Looking forward to your response.`;
         phoneDisplay: "+507 6448-5560",
         driveTime: "1.5h drive + 1.5h ferry",
         estPrice: "Custom quote ($130-$160)",
+        experienceTag: "🟢 Beginner to Intermediate (Perlas Coral)",
+        experienceClass: "background:rgba(6,182,212,0.18); color:#22d3ee; border:1px solid rgba(6,182,212,0.4);",
         bragFactor: "<strong>1865 Submarine & Mobula Rays:</strong> Historic dives to the 'Sub Marine Explorer' in San Telmo and seasonal manta ray migrations.",
         highlight: "Operates in Contadora, Taboga, Portobelo, and Coiba."
       },
@@ -700,6 +984,8 @@ Thank you very much! Looking forward to your response.`;
         phoneDisplay: "+507 6046-8005",
         driveTime: "1.5h drive + 1.5h ferry",
         estPrice: "$125 - $155 / day",
+        experienceTag: "🟢 Snorkel & Family Friendly",
+        experienceClass: "background:rgba(6,182,212,0.18); color:#22d3ee; border:1px solid rgba(6,182,212,0.4);",
         bragFactor: "<strong>Volcanic Diving & Whales:</strong> Volcanic stone reefs with nurse sharks and migrating humpback whales in season.",
         highlight: "Full coordination with Panama City ferry connection."
       }
@@ -774,6 +1060,7 @@ Thank you very much! Looking forward to your response.`;
         <div style="padding: 6px; max-width: 290px;">
           <div class="popup-region" style="color: ${club.color};">${club.regionLabel}</div>
           <div class="popup-title">${club.name}</div>
+          <div style="margin-bottom:6px;"><span class="experience-tag" style="${club.experienceClass}">${club.experienceTag}</span></div>
           <div class="popup-desc">${club.bragFactor}</div>
           
           <div class="popup-details">
@@ -798,14 +1085,100 @@ Thank you very much! Looking forward to your response.`;
 
     // Render Club Cards in Sidebar
     const clubListEl = document.getElementById('clubList');
-    
-    function renderClubs(filter = 'all') {
+    let currentRegionFilter = 'all';
+    let currentExpFilter = 'all';
+
+    function isBeginnerClub(c) {
+      return c.id === 'panama_dive_adventure' || c.id === 'scuba_panama' || c.id === 'scuba_contadora' || c.id === 'panama_dive_center' || c.id === 'pedasi_trips';
+    }
+    function isAdvancedClub(c) {
+      return c.region === 'coiba' || c.id === 'boca_brava_divers' || c.id === 'pedasi_sports_club';
+    }
+
+    function setExpFilter(exp) {
+      currentExpFilter = exp;
+      document.querySelectorAll('.filter-exp-btn').forEach(b => {
+        if (b.getAttribute('data-exp') === exp) {
+          b.classList.add('active');
+          b.style.borderColor = exp === 'beginner' ? '#10b981' : exp === 'advanced' ? '#ef4444' : '#00f2fe';
+          b.style.background = exp === 'beginner' ? 'rgba(16,185,129,0.22)' : exp === 'advanced' ? 'rgba(239,68,68,0.22)' : 'rgba(0,242,254,0.2)';
+          b.style.color = exp === 'beginner' ? '#34d399' : exp === 'advanced' ? '#f87171' : '#00f2fe';
+        } else {
+          b.classList.remove('active');
+          b.style.borderColor = 'rgba(255,255,255,0.1)';
+          b.style.background = 'rgba(255,255,255,0.04)';
+          b.style.color = '#94a3b8';
+        }
+      });
+      renderClubs();
+    }
+
+    function renderClubs() {
       clubListEl.innerHTML = '';
-      const filtered = filter === 'all' ? DIVE_CLUBS : DIVE_CLUBS.filter(c => c.region === filter);
+
+      // Pinned Amateur 101 Explainer Card
+      const pinnedCard = document.createElement('div');
+      pinnedCard.style.cssText = 'background:linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(16, 185, 129, 0.08) 100%); border:1px solid rgba(0, 242, 254, 0.35); border-radius:14px; padding:14px 16px; margin-bottom:4px;';
+      pinnedCard.innerHTML = `
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+          <div style="display:flex; align-items:center; gap:7px;">
+            <span style="font-size:1.25rem;">🤿</span>
+            <div>
+              <h4 style="font-size:0.92rem; font-weight:800; color:#f8fafc; margin:0;">Amateurs & Beginners Guide (Panama 101)</h4>
+              <div style="font-size:0.72rem; color:#38bdf8;">No prior license needed • Operator terms explained</div>
+            </div>
+          </div>
+          <button onclick="openGlossaryModal()" style="padding:4px 10px; border-radius:8px; background:rgba(0,242,254,0.2); border:1px solid rgba(0,242,254,0.4); color:#00f2fe; font-size:0.72rem; font-weight:800; cursor:pointer;">
+            Open 101 Guide →
+          </button>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px; font-size:0.76rem; color:#cbd5e1; line-height:1.45;">
+          <div><strong style="color:#38bdf8;">• What is a "Buzo"?</strong> "Buzo" is Spanish for certified scuba diver. "$155 / buzo" means "$155 per diver" with full gear, boat, guide, and 2 tanks. Non-divers pay less ($50–$100) to ride along and snorkel.</div>
+          <div><strong style="color:#34d399;">• Can Amateurs Dive With Zero License?</strong> <strong>YES!</strong> Ask for <em>Discover Scuba Diving (DSD)</em> — an instructor teaches you in 20 mins and swims holding your hand in calm shallow reefs (under 12m).</div>
+          <div><strong style="color:#fbbf24;">• Best Spot for Beginners:</strong> <strong>Portobelo (Caribbean)</strong> has a calm sheltered bay with zero ocean swell and shallow coral gardens. Pacific spots (Coiba) have heavy currents for advanced divers only.</div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:10px;">
+          <button onclick="setExpFilter('beginner')" style="flex:1; padding:6px 10px; border-radius:8px; background:rgba(16,185,129,0.2); border:1px solid rgba(16,185,129,0.4); color:#34d399; font-size:0.73rem; font-weight:800; cursor:pointer;">
+            🟢 View #1 Beginner Spot (Portobelo $155)
+          </button>
+          <button onclick="openGlossaryModal(); switchGlossaryTab('faq');" style="padding:6px 10px; border-radius:8px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#f8fafc; font-size:0.73rem; font-weight:700; cursor:pointer;">
+            ❓ First-Timer FAQ
+          </button>
+        </div>
+      `;
+      clubListEl.appendChild(pinnedCard);
+
+      const filtered = DIVE_CLUBS.filter(c => {
+        const matchReg = currentRegionFilter === 'all' || c.region === currentRegionFilter;
+        const matchExp = currentExpFilter === 'all' || 
+          (currentExpFilter === 'beginner' && isBeginnerClub(c)) ||
+          (currentExpFilter === 'advanced' && isAdvancedClub(c));
+        return matchReg && matchExp;
+      });
 
       filtered.forEach(club => {
         const waEncoded = encodeURIComponent(OUTREACH_MSG);
         const waUrl = `https://wa.me/${club.phone.replace(/[^0-9]/g, '')}?text=${waEncoded}`;
+
+        const isBeginner = isBeginnerClub(club);
+        const isAdvanced = club.region === 'coiba' || club.id === 'pedasi_sports_club';
+        const verdictBg = isBeginner ? 'rgba(16, 185, 129, 0.1)' : isAdvanced ? 'rgba(239, 68, 68, 0.1)' : 'rgba(139, 92, 246, 0.1)';
+        const verdictBorder = isBeginner ? 'rgba(16, 185, 129, 0.35)' : isAdvanced ? 'rgba(239, 68, 68, 0.35)' : 'rgba(139, 92, 246, 0.35)';
+        const verdictFg = isBeginner ? '#34d399' : isAdvanced ? '#f87171' : '#c4b5fd';
+        const verdictTitle = club.id === 'panama_dive_adventure' ? '🟢 100% Beginner & Amateur Approved' :
+                             club.id === 'scuba_panama' ? '🟢 Beginner Friendly Training Center' :
+                             club.id === 'scuba_contadora' ? '🟢 Introductory Courses Available' :
+                             club.id === 'boca_brava_divers' ? '🟡 Intermediate / Amateurs (Snorkel Only)' :
+                             club.region === 'coiba' ? '🔴 Advanced Only — Not For First-Timers' :
+                             club.id === 'pedasi_trips' ? '🤿 Snorkel Friendly (Bring Own Tanks)' :
+                             'Tour Details';
+        const verdictDesc = club.id === 'panama_dive_adventure' ? 'Sheltered Caribbean bay with zero oceanic swell and shallow 3-12m coral reefs. Discover Scuba Diving available with zero prior license. Full gear provided.' :
+                            club.id === 'scuba_panama' ? 'Calm Portobelo waters. Ideal for entry-level training and first-time ocean divers.' :
+                            club.id === 'scuba_contadora' ? 'Offers introductory PADI Try Scuba in calm Pacific bay beaches.' :
+                            club.id === 'boca_brava_divers' ? 'Amateurs can join the boat for $100 to snorkel and island-hop. Scuba at open-ocean pinnacles requires certified divers.' :
+                            club.region === 'coiba' ? 'Roaring pelagic currents and 40m drop-offs. High risk for first-timers; minimum Open Water certification required.' :
+                            club.id === 'pedasi_trips' ? 'Shallow coral reef snorkeling at Isla Iguana. Scuba divers must bring their own tanks.' :
+                            club.bragFactor;
 
         const card = document.createElement('div');
         card.className = 'club-card';
@@ -815,12 +1188,23 @@ Thank you very much! Looking forward to your response.`;
             <div class="club-name">${club.name}</div>
             <span class="region-pill ${club.badgeClass}">${club.regionLabel}</span>
           </div>
+          <div style="margin: 2px 0 6px;">
+            <span class="experience-tag" style="${club.experienceClass}">${club.experienceTag}</span>
+          </div>
           <div class="club-sub">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             ${club.location}
           </div>
-          <div class="club-brag">${club.bragFactor}</div>
-          
+
+          <!-- Amateur Suitability Box -->
+          <div style="background:${verdictBg}; border:1px solid ${verdictBorder}; border-radius:10px; padding:8px 10px; margin:8px 0;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+              <span style="font-size:0.69rem; font-weight:800; text-transform:uppercase; color:${verdictFg};">${verdictTitle}</span>
+              <span style="font-size:0.64rem; font-weight:700; padding:1px 6px; border-radius:4px; background:rgba(255,255,255,0.08); color:#94a3b8;">${isBeginner ? 'No License Needed' : isAdvanced ? 'OWD Required' : 'Tour'}</span>
+            </div>
+            <div style="font-size:0.73rem; color:#cbd5e1; line-height:1.35;">${verdictDesc}</div>
+          </div>
+
           <div class="meta-bar">
             <span>🚗 ${club.driveTime}</span>
             <span>💰 ${club.estPrice}</span>
@@ -846,20 +1230,28 @@ Thank you very much! Looking forward to your response.`;
       });
     }
 
-    renderClubs('all');
+    renderClubs();
 
-    // Filter Buttons logic
+    // Experience Filter Button Handlers
+    document.querySelectorAll('.filter-exp-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const exp = btn.getAttribute('data-exp');
+        setExpFilter(exp);
+      });
+    });
+
+    // Region Filter Buttons logic
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const filter = btn.getAttribute('data-filter');
-        renderClubs(filter);
+        currentRegionFilter = btn.getAttribute('data-filter');
+        renderClubs();
 
-        if (filter === 'all') {
+        if (currentRegionFilter === 'all') {
           map.flyTo([8.5, -80.5], 8, { duration: 1 });
         } else {
-          const match = DIVE_CLUBS.find(c => c.region === filter);
+          const match = DIVE_CLUBS.find(c => c.region === currentRegionFilter);
           if (match) {
             map.flyTo(match.coords, 10, { duration: 1.2 });
             markers[match.id].openPopup();
@@ -880,7 +1272,14 @@ Thank you very much! Looking forward to your response.`;
         const waUrl = `https://wa.me/${c.phone.replace(/[^0-9]/g, '')}?text=${waEncoded}`;
 
         const row = document.createElement('div');
-        row.className = 'queue-row';
+        row.style.display = 'flex';
+        row.style.justifyContent = 'space-between';
+        row.style.alignItems = 'center';
+        row.style.background = 'rgba(255, 255, 255, 0.04)';
+        row.style.padding = '8px 12px';
+        row.style.borderRadius = '8px';
+        row.style.fontSize = '0.82rem';
+
         row.innerHTML = `
           <div>
             <strong>${c.name}</strong> (${c.regionLabel})
@@ -898,6 +1297,31 @@ Thank you very much! Looking forward to your response.`;
 
     function closeBroadcastModal() {
       document.getElementById('broadcastModal').classList.remove('open');
+    }
+
+    // Glossary Modal Logic
+    function openGlossaryModal() {
+      document.getElementById('glossaryModal').classList.add('open');
+    }
+
+    function closeGlossaryModal() {
+      document.getElementById('glossaryModal').classList.remove('open');
+    }
+
+    function switchGlossaryTab(tabKey) {
+      ['buzo', 'beginners', 'sites', 'pricing', 'faq'].forEach(t => {
+        const btn = document.getElementById(`tab-${t}-btn`);
+        const content = document.getElementById(`tab-${t}`);
+        if (btn && content) {
+          if (t === tabKey) {
+            btn.classList.add('active');
+            content.style.display = 'block';
+          } else {
+            btn.classList.remove('active');
+            content.style.display = 'none';
+          }
+        }
+      });
     }
   </script>
 </body>
